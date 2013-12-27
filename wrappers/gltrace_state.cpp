@@ -168,7 +168,8 @@ void setContext(uintptr_t context_id)
         GLint scissor_box[4] = {0, 0, 0, 0};
         _glGetIntegerv(GL_VIEWPORT, viewport);
         _glGetIntegerv(GL_SCISSOR_BOX, scissor_box);
-        glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
+        if (!(!viewport[0] && !viewport[1] && !viewport[2] && !viewport[3]))
+            glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
         glScissor(scissor_box[0], scissor_box[1], scissor_box[2], scissor_box[3]);
     }
 }
