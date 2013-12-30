@@ -34,6 +34,7 @@
 
 from gltrace import GlTracer
 from specs.stdapi import Module, API
+# FIXME
 from specs.glapi import glapi
 from specs.eglapi import eglapi
 from specs.glesapi import glesapi

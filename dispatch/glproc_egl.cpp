@@ -116,7 +116,9 @@ _getPublicProcAddress(const char *procName)
 
     return NULL;
 #else
-    return dlsym(RTLD_NEXT, procName);
+    void* result = dlsym(RTLD_NEXT, procName);
+//    os::log("_getPublicProcAddress egl fallback:%s pointer:%x\n", procName, result);
+    return result;
 #endif
 }
 
@@ -141,7 +143,7 @@ _getPrivateProcAddress(const char *procName)
          (procName[0] == 'g' && procName[1] == 'l'))) {
         proc = (void *) _eglGetProcAddress(procName);
     }
-
+//    os::log("_getPRIVATEProcAddress gl %s prt:%x\n", procName, proc);
     return proc;
 }
 
